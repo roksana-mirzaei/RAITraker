@@ -6,9 +6,9 @@ Supplier-agnostic AI evaluation framework.
 Please note that this execise is only for learning puposes, and should not be used any commerical or non-learning purposes.
 
 ## README and my notes
-I have provided my notes, design decision, architectural thinking in rait-mle-assessment/docs/homework_report.md
+I have provided my notes, design decision, architectural thinking in docs/homework_report.md
 
-Also I have provided my results in rait-mle-assessment/docs/run_results.txt
+Also I have provided my results in docs/run_results.txt
 ## Structure
 ```
 rait-mle-assessment/
