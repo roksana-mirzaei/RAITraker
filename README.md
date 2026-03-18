@@ -6,9 +6,6 @@ Supplier-agnostic AI evaluation framework (Python 3.10+).
 Please note that this execise is only for learning puposes, and should not be used any commerical or non-learning purposes.
 
 ## Structure
-
-![Code Architecture](docs/images/rait_code_architecture.svg)
-
 ```
 rait-mle-assessment/
   src/
