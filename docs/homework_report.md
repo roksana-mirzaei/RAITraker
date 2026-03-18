@@ -21,7 +21,7 @@ Raw Supplier Data → Adapter (per supplier) → Canonical Schema → Metrics & 
      (Bronze)                                    (Silver)             (Gold)
 ```
 
-![RAIT Architecture Diagram](images/rait_architecture.svg)
+<img src="images/rait_architecture.svg" width="600" alt="RAIT Architecture Diagram"/>
  
 Each supplier has one adapter. The adapter absorbs all supplier-specific complexity (considering that this should be flexible and easy to change. For exmaple if we cant to add new supplier or change the schema). By the time data reaches the evaluation layer it is in one format, always. Adding a fourth supplier means writing one new adapter class — nothing else changes.
 
