@@ -1,6 +1,6 @@
 # rait-mle-assessment
 
-Supplier-agnostic AI evaluation framework (Python 3.10+).
+Supplier-agnostic AI evaluation framework.
 
 ### Impotant: 
 Please note that this execise is only for learning puposes, and should not be used any commerical or non-learning purposes.
