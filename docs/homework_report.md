@@ -123,11 +123,3 @@ Multi-turn escalation has no low-severity entries by design. A trivial multi-tur
 
 I used Anthropic (claude-sonnet-4-20250514) for LLM-as-judge evaluation. becuase of its reliable structured JSON output and consistent instruction following across multi-run averaging. The framework is not coupled to Anthropic — swapping providers requires changing one class.
 
----
-
-## Trade-offs I Would Address With More Time
-
-- **Semantic similarity threshold (0.75)** is a reasonable default but should be calibrated against labelled data in production.
-- **Demographic signal detection** uses keyword matching — a production system would need a more robust classifier.
-- **Multi-turn escalation** is nearly unscorable for Suppliers B and C since complete conversation sequences rarely appear in batch exports. This is a genuine architectural limitation of those access models, not a framework gap.
-- **Synthetic data** is sufficient to demonstrate the pipeline but real-world data would surface edge cases the synthetic set cannot.
