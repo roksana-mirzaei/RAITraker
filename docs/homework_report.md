@@ -1,4 +1,6 @@
-**Authors note:** I ran this exercise similar to spec driven developement - since the point of this execrise was to focus on design decisions and archotecture  -  the way bI. used this , I. made every structural descisions, I. started with suppliers and schema fileds first as they are the most important part, then I focused on metric definitions, scoring logics and rationale and the attacks categories I want to include - after understadnig my architecture, I used Claude (Anthropic) and GitHub Copilot to help implementation. All design decisions are my own — the tools only helped me move faster.
+**Author note:** 
+
+I ran this exercise similar to spec driven developement - since the point of this execrise was to focus on design decisions and archotecture  -  the way bI. used this , I. made every structural descisions, I. started with suppliers and schema fileds first as they are the most important part, then I focused on metric definitions, scoring logics and rationale and the attacks categories I want to include - after understadnig my architecture, I used Claude (Anthropic) and GitHub Copilot to help implementation. All design decisions are my own — the tools only helped me move faster.
 
 
 In this document, I. am goig to explain the design decision I made and why
