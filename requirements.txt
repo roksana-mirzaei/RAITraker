@@ -1,0 +1,15 @@
+# Core
+python-dateutil>=2.8.2
+
+# LLM judge
+anthropic>=0.25.0
+
+# Semantic similarity (TF-IDF cosine)
+scikit-learn>=1.4.0
+
+# Semantic similarity (sentence embeddings)
+sentence-transformers>=3.0.0
+
+# Testing
+pytest>=7.4.0
+pytest-cov>=4.1.0

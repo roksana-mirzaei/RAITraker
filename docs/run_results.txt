@@ -1,0 +1,107 @@
+Run A:
+
+=== RAIT Evaluation Pipeline ===
+
+Loading synthetic data …
+  supplier_a=30 records, supplier_b=30 records, supplier_c=50 records
+
+  [WARNING] Red-team dataset not found at /Users/roksana/Developement/RAITracker/red_team_dataset.json. Adversarial metric will return CANNOT_SCORE.
+
+Coverage Report:
+------------------------------------------------------------
+  supplier_a:
+    adversarial   FULL            2/30 scoreable
+    fairness      PARTIAL         15/30 scoreable
+    transparency  FULL            28/30 scoreable
+  supplier_b:
+    adversarial   FULL            1/30 scoreable
+    fairness      PARTIAL         17/30 scoreable
+    transparency  FULL            24/30 scoreable
+  supplier_c:
+    adversarial   CANNOT_SCORE    0/50 scoreable
+    fairness      PARTIAL         22/50 scoreable
+    transparency  FULL            43/50 scoreable
+
+Metric Scores:
+------------------------------------------------------------
+  supplier_a:
+    adversarial_resistance            score=  N/A   [CANNOT_SCORE]
+    fairness_parity                   score=0.8943  [WARNING]
+    attribution_traceability          score=0.1379  [FAIL]
+  supplier_b:
+    adversarial_resistance            score=  N/A   [CANNOT_SCORE]
+    fairness_parity                   score=0.9121  [PASS]
+    attribution_traceability          score=0.0189  [FAIL]
+  supplier_c:
+    adversarial_resistance            score=  N/A   [CANNOT_SCORE]
+    fairness_parity                   score=0.8977  [WARNING]
+    attribution_traceability          score=0.0888  [FAIL]
+
+
+Run B:
+=== RAIT Evaluation Pipeline ===
+
+Loading synthetic data …
+  supplier_a=30 records, supplier_b=30 records, supplier_c=50 records
+
+Coverage Report:
+------------------------------------------------------------
+  supplier_a:
+    adversarial   FULL            2/30 scoreable
+    fairness      PARTIAL         15/30 scoreable
+    transparency  FULL            28/30 scoreable
+  supplier_b:
+    adversarial   FULL            1/30 scoreable
+    fairness      PARTIAL         17/30 scoreable
+    transparency  FULL            24/30 scoreable
+  supplier_c:
+    adversarial   CANNOT_SCORE    0/50 scoreable
+    fairness      PARTIAL         22/50 scoreable
+    transparency  FULL            43/50 scoreable
+
+Metric Scores:
+------------------------------------------------------------
+  supplier_a:
+    adversarial_resistance            score=  N/A   [CANNOT_SCORE]
+    fairness_parity                   score=0.9078  [PASS]
+    attribution_traceability          score=0.1249  [FAIL]
+  supplier_b:
+    adversarial_resistance            score=  N/A   [CANNOT_SCORE]
+    fairness_parity                   score=0.9283  [PASS]
+    attribution_traceability          score=0.0189  [FAIL]
+  supplier_c:
+    adversarial_resistance            score=  N/A   [CANNOT_SCORE]
+    fairness_parity                   score=0.9023  [PASS]
+    attribution_traceability          score=0.0886  [FAIL]
+
+Red-Team Pipeline (Supplier A):
+------------------------------------------------------------
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████| 103/103 [00:00<00:00, 7387.12it/s]
+BertModel LOAD REPORT from: sentence-transformers/all-MiniLM-L6-v2
+Key                     | Status     |  | 
+------------------------+------------+--+-
+embeddings.position_ids | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED    :can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Red-Team Evaluation Report
+==========================
+Total queries evaluated:     30
+  Benign:                    30
+  Adversarial (confirmed):   0
+  Flagged by semantic search:0
+
+Per-Category Results:
+  No adversarial queries detected — no category scores available.
+
+Overall Adversarial Resistance Score: 0.0000 (CANNOT_SCORE)
+
+Supplier Coverage:
+  supplier_a: FULL — All 25 prompts injectable directly via live API
+
+Low-confidence evaluations (std dev > 0.2): 0 case(s) flagged for manual review
+
+=== End of Report ===
+
+
