@@ -35,15 +35,35 @@ I defined the minimum viable data contract — the fewest fields every supplier 
 
 I made few deliberate exclusions:
 
-- `user_id` is excluded because it is likely PII and unavailable from two of three suppliers. 
+- `user_id` is excluded because it is likely PII and unavailable from two of three suppliers (B and C).  
  
 - Source format (JSON/CSV/PDF) is also excluded because that is the adapter's concern, not the data contract's.
 
-- `interaction_id` is namespaced by supplier (`supplier_a_*`, `supplier_b_*`, `supplier_c_*`) to guarantee global uniqueness when all three datasets are combined -  simply add supplier name as a prefix
+- session_id: Suppliers B and C do not provide session-level context
+
+- Ingestion pipeline metadata (status, file size, retry count) This belongs to the pipeline orchestration layer, not data contract layer
+
+- Monthly aggregate statistics from Supplier C: Supplier C's monthly report includes aggregated statistics (total query volume, average response time, etc.). These are population-level numbers, not interaction-level data. 
+
+
+#### Field availability per supplier
+
+| Field | Supplier A (JSON API) | Supplier B (Daily CSV) | Supplier C (Monthly 50 samples) |
+|---|---|---|---|
+| `interaction_id` | ✅ Constructed | ✅ Constructed | ✅ Constructed |
+| `supplier_id` | ✅ Always | ✅ Always | ✅ Always |
+| `user_query` | ✅ | ✅ | ✅ |
+| `ai_response` | ✅ | ✅ | ✅ |
+| `timestamp` | ✅ | ✅ | ❌ Not provided |
+| `model_name` | ✅ | ❌ Not provided | ❌ Not provided |
+| `model_version` | ✅ | ❌ Not provided | ❌ Not provided |
+| `prompt_tokens` | ✅ | ❌ Not provided | ❌ Not provided |
+| `response_tokens` | ✅ | ❌ Not provided | ❌ Not provided |
+| `confidence_score` | ❌ Not provided | ✅ Supplier-assigned | ❌ Not provided |
 
 ### The Supplier C Problem
 
-Supplier C provides only 50 pre-selected monthly samples with no timestamps, no model metadata, and no control over what the samples contain. The framework does not pretend this is fine.
+Supplier C provides only 50 pre-selected monthly samples with no timestamps, no model metadata, and no control over what the samples contain, no confidence score. The framework does not pretend this is fine.
 
 **Absence is data, not an error.** The coverage reporter explicitly flags what could and could not be scored per supplier. For Supplier C, being unable to score the adversarial metric is itself an audit finding
 
